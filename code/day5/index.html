@@ -1,0 +1,45 @@
+ <!DOCTYPE html>
+ <html lang="en">
+     <head>
+         <meta charset="utf-8">
+         <title>v-on</title>
+     <script src="vue.js"></script>
+	 <style type="text/css">
+	.todolistDiv{
+		margin:200px auto;
+		width:220px;
+		height: auto;
+	}
+	span{
+		font-size: 50px;
+		color: blue;
+	}
+	 </style>
+     </head>
+     <body>
+		 <div id="vue-todolist" class="todolistDiv">
+		 <span> todolist</span>
+     <div id="todolist">
+      <input type="text" v-model="inputValue" />
+      <button v-on:click="handleClick">add</button>
+      <ul>
+        <li v-for="(item, index) of list" :key="index">{{item}}</li>
+      </ul>
+    </div>
+      <script>
+        var todolist = new Vue({
+          el: '#todolist',
+          data: {
+            inputValue: '',
+            list: []
+          },
+          methods: {
+            handleClick() {
+              this.list.push(this.inputValue)
+              this.inputValue = ''
+            }
+          }
+        })
+      </script>
+    </body>
+</html>
